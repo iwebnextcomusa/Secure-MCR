@@ -1,0 +1,6 @@
+{
+  "name": "Secure MCR",
+  "description": "Professional CCTV Sales & Installation Across the UK. High-quality HD and wireless camera kits for residential and commercial security.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

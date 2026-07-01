@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-blue: #3b82f6;
+  --color-brand-dark: #050b14;
+  --color-brand-darker: #020617;
+}
+
+/* Custom Cyber-Surveillance Scanlines & Aesthetic Utilities */
+.bg-scanlines {
+  background: linear-gradient(
+    rgba(15, 23, 42, 0) 50%, 
+    rgba(2, 6, 23, 0.35) 50%
+  );
+  background-size: 100% 4px;
+}
+
+.glow-blue {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
+}
+
+.glow-blue-strong {
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.35);
+}
+
+.neon-border {
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  transition: all 0.3s ease;
+}
+
+.neon-border:hover {
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(10, 17, 32, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-accent {
+  background: rgba(10, 17, 32, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-led-blink {
+  animation: blink 1.2s infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.animate-scanline {
+  animation: scan 4s linear infinite;
+}
+
+/* Hide scrollbar for clean aesthetics but retain functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom selection styling */
+::selection {
+  background-color: rgba(59, 130, 246, 0.4);
+  color: #ffffff;
+}
