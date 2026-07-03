@@ -40,7 +40,7 @@ export default function SecurityChatbot() {
           parts.push(line.substring(lastIndex, match.index));
         }
         parts.push(
-          <strong key={match.index} className="text-blue-400 font-semibold">
+          <strong key={match.index} className="text-red-400 font-semibold">
             {match[1]}
           </strong>
         );
@@ -142,14 +142,14 @@ export default function SecurityChatbot() {
         <button
           onClick={() => setIsOpen(true)}
           id="chat-toggle-btn"
-          className="relative flex items-center justify-center w-14 h-14 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full shadow-2xl shadow-blue-500/30 hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer border border-blue-400/20"
+          className="relative flex items-center justify-center w-14 h-14 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-full shadow-2xl shadow-red-500/30 hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer border border-red-400/20"
         >
           {/* Pulsing Outer Glow */}
-          <span className="absolute inset-0 rounded-full bg-blue-500/20 animate-ping"></span>
+          <span className="absolute inset-0 rounded-full bg-red-500/20 animate-ping"></span>
           <MessageSquare className="w-6 h-6 group-hover:rotate-6 transition-transform duration-300" />
           
           {/* Tooltip */}
-          <span className="absolute right-16 bg-slate-900 border border-blue-500/20 text-blue-300 text-xs px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
+          <span className="absolute right-16 bg-slate-900 border border-red-500/20 text-red-300 text-xs px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
             CCTV AI Expert Live
           </span>
         </button>
@@ -159,22 +159,22 @@ export default function SecurityChatbot() {
       {isOpen && (
         <div
           id="chatbot-window"
-          className="relative flex flex-col w-[360px] sm:w-[380px] h-[500px] bg-slate-950/95 border border-blue-500/35 rounded-2xl shadow-2xl shadow-blue-500/10 overflow-hidden backdrop-blur-xl animate-fade-in"
+          className="relative flex flex-col w-[360px] sm:w-[380px] h-[500px] bg-slate-950/95 border border-red-500/35 rounded-2xl shadow-2xl shadow-red-500/10 overflow-hidden backdrop-blur-xl animate-fade-in"
         >
           {/* Glow backdrop bar */}
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-600"></div>
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 via-rose-550 to-red-600"></div>
 
           {/* Chat Window Header */}
-          <div className="flex items-center justify-between px-4 py-3.5 bg-slate-900/90 border-b border-blue-500/15">
+          <div className="flex items-center justify-between px-4 py-3.5 bg-slate-900/90 border-b border-red-500/15">
             <div className="flex items-center gap-2.5">
-              <div className="relative flex items-center justify-center w-8 h-8 bg-blue-600/20 border border-blue-500/30 rounded-lg">
-                <Shield className="w-4.5 h-4.5 text-blue-400" />
+              <div className="relative flex items-center justify-center w-8 h-8 bg-red-600/20 border border-red-500/30 rounded-lg">
+                <Shield className="w-4.5 h-4.5 text-red-400" />
                 <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-emerald-500 rounded-full border border-slate-950 animate-pulse"></span>
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-slate-100 tracking-wide">Secure MCR Consultant</h4>
-                <span className="text-[10px] text-blue-400/80 font-mono flex items-center gap-1">
-                  <Clock className="w-3 h-3 text-blue-400/60" /> Online // Instant Quotation
+                <span className="text-[10px] text-red-400/80 font-mono flex items-center gap-1">
+                  <Clock className="w-3 h-3 text-red-400/60" /> Online // Instant Quotation
                 </span>
               </div>
             </div>
@@ -197,7 +197,7 @@ export default function SecurityChatbot() {
                   className={`flex gap-2.5 ${isBot ? "justify-start" : "justify-end"}`}
                 >
                   {isBot && (
-                    <div className="flex-shrink-0 w-7 h-7 bg-blue-900/40 border border-blue-500/30 rounded-md flex items-center justify-center mt-1 text-blue-400 font-mono text-[10px] font-bold">
+                    <div className="flex-shrink-0 w-7 h-7 bg-red-950/40 border border-red-500/30 rounded-md flex items-center justify-center mt-1 text-red-400 font-mono text-[10px] font-bold">
                       MCR
                     </div>
                   )}
@@ -205,7 +205,7 @@ export default function SecurityChatbot() {
                     className={`max-w-[80%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed ${
                       isBot
                         ? "bg-slate-900/95 border border-slate-800/80 text-slate-200 rounded-tl-sm shadow-sm"
-                        : "bg-blue-600/90 text-white rounded-tr-sm font-medium shadow-md"
+                        : "bg-red-600/90 text-white rounded-tr-sm font-medium shadow-md"
                     }`}
                   >
                     {formatText(msg.text)}
@@ -220,12 +220,12 @@ export default function SecurityChatbot() {
             {/* AI Typing Loader Indicator */}
             {isTyping && (
               <div className="flex gap-2.5 justify-start">
-                <div className="flex-shrink-0 w-7 h-7 bg-blue-900/40 border border-blue-500/30 rounded-md flex items-center justify-center mt-1 text-blue-400 font-mono text-[10px] font-bold">
+                <div className="flex-shrink-0 w-7 h-7 bg-red-950/40 border border-red-500/30 rounded-md flex items-center justify-center mt-1 text-red-400 font-mono text-[10px] font-bold">
                   MCR
                 </div>
                 <div className="bg-slate-900/95 border border-slate-800/80 text-slate-400 px-3.5 py-3 rounded-2xl text-xs rounded-tl-sm shadow-sm flex items-center gap-1.5">
-                  <RefreshCw className="w-3.5 h-3.5 animate-spin text-blue-400" />
-                  <span className="font-mono text-[10px] text-blue-400/70 tracking-wider">SECURE_MCR SCANNING...</span>
+                  <RefreshCw className="w-3.5 h-3.5 animate-spin text-red-400" />
+                  <span className="font-mono text-[10px] text-red-400/70 tracking-wider">SECURE_MCR SCANNING...</span>
                 </div>
               </div>
             )}
@@ -235,7 +235,7 @@ export default function SecurityChatbot() {
 
           {/* Graceful Backup Info notification */}
           {errorStatus && (
-            <div className="px-3 py-1 bg-blue-950/40 border-t border-b border-blue-500/10 text-[10px] text-blue-400/80 font-mono text-center flex items-center justify-center gap-1">
+            <div className="px-3 py-1 bg-red-950/40 border-t border-b border-red-500/10 text-[10px] text-red-400/80 font-mono text-center flex items-center justify-center gap-1">
               <span>{errorStatus}</span>
             </div>
           )}
@@ -243,29 +243,29 @@ export default function SecurityChatbot() {
           {/* Message Input Form */}
           <form
             onSubmit={handleSend}
-            className="p-3 bg-slate-900 border-t border-blue-500/15 flex gap-2 items-center"
+            className="p-3 bg-slate-900 border-t border-red-500/15 flex gap-2 items-center"
           >
             <input
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder="Ask for a quote or system info..."
-              className="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500/50 transition-colors"
+              className="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-red-500/50 transition-colors"
             />
             <button
               type="submit"
-              className="p-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl active:scale-95 transition-all shadow-md flex items-center justify-center"
+              className="p-2 bg-red-600 hover:bg-red-500 text-white rounded-xl active:scale-95 transition-all shadow-md flex items-center justify-center"
             >
               <Send className="w-4.5 h-4.5" />
             </button>
           </form>
 
           {/* Quick contact trigger panel */}
-          <div className="px-4 py-2 bg-slate-950 border-t border-blue-500/10 flex justify-between items-center text-[10px] text-slate-400">
+          <div className="px-4 py-2 bg-slate-950 border-t border-red-500/10 flex justify-between items-center text-[10px] text-slate-400">
             <span className="font-mono">Direct Desk:</span>
             <a
               href="tel:+447514856229"
-              className="text-blue-400 hover:underline flex items-center gap-1 font-mono font-medium"
+              className="text-red-400 hover:underline flex items-center gap-1 font-mono font-medium"
             >
               <Phone className="w-3 h-3" /> +44 7514 856229
             </a>

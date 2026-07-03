@@ -30,6 +30,10 @@ export default function Cctv3DModel() {
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
+    
+    // Apply styling to the canvas element
+    renderer.domElement.className = "w-full h-full object-cover transition-all duration-700 hover:scale-[1.01] filter drop-shadow-[0_0_30px_rgba(239,68,68,0.2)] cursor-crosshair rounded-3xl";
+    
     container.appendChild(renderer.domElement);
 
     // 3. Create Camera 3D Mesh Group
@@ -92,11 +96,11 @@ export default function Cctv3DModel() {
     lensCollar.position.set(0, 0, 1);
     pivotGroup.add(lensCollar);
 
-    // F. Glowing Neon Blue Lens Ring (Emissive Accent)
+    // F. Glowing Neon Red Lens Ring (Emissive Accent)
     const glowRingGeo = new THREE.TorusGeometry(0.38, 0.04, 8, 32);
     const glowMaterial = new THREE.MeshStandardMaterial({
-      color: 0x3b82f6,
-      emissive: 0x3b82f6,
+      color: 0xef4444,
+      emissive: 0xef4444,
       emissiveIntensity: 1.8,
     });
     const glowRing = new THREE.Mesh(glowRingGeo, glowMaterial);
@@ -125,7 +129,7 @@ export default function Cctv3DModel() {
     // I. Holographic Scanning Cone / Spotlight (Semireflective translucent)
     const coneGeo = new THREE.ConeGeometry(1.6, 6, 32, 1, true);
     const coneMat = new THREE.MeshBasicMaterial({
-      color: 0x3b82f6,
+      color: 0xef4444,
       transparent: true,
       opacity: 0.12,
       side: THREE.DoubleSide,
@@ -139,7 +143,7 @@ export default function Cctv3DModel() {
     // J. Add target ring/wireframe at the end of the cone
     const targetRingGeo = new THREE.RingGeometry(1.5, 1.55, 32);
     const targetRingMat = new THREE.MeshBasicMaterial({
-      color: 0x60a5fa,
+      color: 0xfca5a5,
       transparent: true,
       opacity: 0.3,
       side: THREE.DoubleSide,
@@ -164,7 +168,7 @@ export default function Cctv3DModel() {
 
     particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     const particleMat = new THREE.PointsMaterial({
-      color: 0x60a5fa,
+      color: 0xfca5a5,
       size: 0.05,
       transparent: true,
       opacity: 0.6,
@@ -181,9 +185,9 @@ export default function Cctv3DModel() {
     mainLight.position.set(5, 8, 5);
     scene.add(mainLight);
 
-    const blueSpotlight = new THREE.PointLight(0x3b82f6, 3, 10);
-    blueSpotlight.position.set(0, 1.5, 2);
-    scene.add(blueSpotlight);
+    const redSpotlight = new THREE.PointLight(0xef4444, 3, 10);
+    redSpotlight.position.set(0, 1.5, 2);
+    scene.add(redSpotlight);
 
     // 6. Interactive Cursor Tracking State
     const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
@@ -305,23 +309,23 @@ export default function Cctv3DModel() {
   }, [isClient, isTracking]);
 
   return (
-    <div className="relative w-full h-[380px] md:h-[450px] flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950/20 via-blue-950/10 to-slate-950/20 rounded-3xl border border-blue-500/10 backdrop-blur-md shadow-2xl shadow-blue-500/5">
+    <div className="relative w-full h-[380px] md:h-[450px] flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950/20 via-red-950/10 to-slate-950/20 rounded-3xl border border-red-500/10 backdrop-blur-md shadow-2xl shadow-red-500/5">
       {/* Dynamic scanline overlay */}
       <div className="absolute inset-0 bg-scanlines pointer-events-none opacity-10"></div>
 
       {/* Cyberpunk decorative corner brackets */}
-      <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-blue-500/40 rounded-tl-sm pointer-events-none"></div>
-      <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-blue-500/40 rounded-tr-sm pointer-events-none"></div>
-      <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-blue-500/40 rounded-bl-sm pointer-events-none"></div>
-      <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-blue-500/40 rounded-br-sm pointer-events-none"></div>
+      <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-red-500/40 rounded-tl-sm pointer-events-none"></div>
+      <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-red-500/40 rounded-tr-sm pointer-events-none"></div>
+      <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-red-500/40 rounded-bl-sm pointer-events-none"></div>
+      <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-red-500/40 rounded-br-sm pointer-events-none"></div>
 
       {/* Interactive controls panel */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-slate-900/80 border border-blue-500/20 px-3 py-1.5 rounded-full text-xs font-mono text-blue-400 backdrop-blur-md shadow-lg pointer-events-auto z-10">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-slate-900/80 border border-red-500/20 px-3 py-1.5 rounded-full text-xs font-mono text-red-400 backdrop-blur-md shadow-lg pointer-events-auto z-10">
         <button
           onClick={() => setIsTracking(!isTracking)}
           className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full transition-all duration-300 ${
             isTracking
-              ? "bg-blue-600/20 text-blue-300 border border-blue-500/30"
+              ? "bg-red-600/20 text-red-300 border border-red-500/30"
               : "hover:bg-slate-800 text-slate-400"
           }`}
         >
@@ -340,9 +344,9 @@ export default function Cctv3DModel() {
       </div>
 
       {/* Overlay status text */}
-      <div className="absolute top-4 left-4 font-mono text-[10px] text-blue-400/60 leading-relaxed pointer-events-none flex flex-col gap-1 select-none hidden sm:flex">
+      <div className="absolute top-4 left-4 font-mono text-[10px] text-red-400/60 leading-relaxed pointer-events-none flex flex-col gap-1 select-none hidden sm:flex">
         <span className="flex items-center gap-1">
-          <Shield className="w-3 h-3 text-blue-500" />
+          <Shield className="w-3 h-3 text-red-500" />
           <span>SYS.STATUS: ARMED</span>
         </span>
         <span className="flex items-center gap-1">
